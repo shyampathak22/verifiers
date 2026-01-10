@@ -27,10 +27,10 @@ Hosted Training, available within our Lab platform, enables you to automatically
 
 ### Configuration
 
-Use the `vf-setup` script to download example configuration files for Hosted Training into your workspace:
+Use the `prime lab setup` script to download example configuration files for Hosted Training into your workspace:
 
 ```bash
-uv run vf-setup
+prime lab setup
 ```
 
 This will download example TOML configs for Hosted Training into `configs/lab/`, along with `endpoints.py`:
@@ -86,7 +86,7 @@ Our [`prime-rl`](https://github.com/PrimeIntellect-ai/prime-rl) trainer is a pro
 
 To set up your workspace for training with `prime-rl`, run:
 ```bash
-uv run vf-setup --prime-rl
+prime lab setup --prime-rl
 ```
 
 This will clone and install the `prime-rl` trainer and its dependencies, and set up a default TOML config for training with the included `wiki-search` Environment on 8 GPUs.
@@ -116,7 +116,7 @@ uv add 'verifiers[rl]'
 Then, use the `vf-setup` script to download example configuration files for `vf.RLTrainer` into your workspace:
 
 ```bash
-uv run vf-setup --vf-rl
+prime lab setup --vf-rl
 ```
 This will download example TOML configs for `vf.RLTrainer` into `configs/vf-rl/`, along with `endpoints.py`:
 
@@ -199,6 +199,9 @@ Core fields in `[trainer.args]`:
 - `learning_rate`, `lr_scheduler_type`, `warmup_steps`, `max_steps`
 - `max_grad_norm`, `bf16`, `gradient_checkpointing`
 
+### Model loading
+
+By default, `vf.RLTrainer` will use Liger Kernel for optimized training. To disable Liger Kernel, set `use_liger = false` in `[trainer.args]`.
 
 ## RL Rules of Thumb
 
